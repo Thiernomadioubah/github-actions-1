@@ -1,0 +1,12 @@
+name: Exemple avec always()
+on: push
+
+jobs :
+  exemple :
+    runs-on : ubuntu-latest
+    steps :
+      - name : définir une variable
+        run : echo "MA_VARIABLE=Bonjour" >> $GITHUB_ENV
+      - name : utiliser la variable
+        run : echo "La valeur de MA_VARIABLE est $MA_VARIABLE."
+      - run : echo "La valeur de MA_VARIABLE est au le meme ${{ env.MA_VARIABLE}}."
