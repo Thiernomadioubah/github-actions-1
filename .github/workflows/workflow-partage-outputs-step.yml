@@ -6,7 +6,7 @@ jobs :
     runs-on : ubuntu-latest
     steps :
       - name : définir une variable
-        id: setp1
+        id: step1
         run : echo "MA_VARIABLE=Bonjour" >> $GITHUB_OUTPUT
       - name : utiliser la variable
         run : echo "La valeur de MA_VARIABLE est ${{steps.step1.outputs.MA_VARIABLE}}"
