@@ -7,7 +7,7 @@ jobs :
     steps :
       - name : définir une variable
         id: setp1
-        run : echo "MA_VARIABLE=Bonjour" >> $GITHUB_OUPUT
+        run : echo "MA_VARIABLE=Bonjour" >> $GITHUB_OUTPUT
       - name : utiliser la variable
         run : echo "La valeur de MA_VARIABLE est ${{steps.step1.MA_VARIABLE}}"
      
