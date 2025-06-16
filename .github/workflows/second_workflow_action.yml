@@ -18,3 +18,5 @@ jobs:
           echo "$NIVEAU_ETAPE"
           echo "$NIVEAU_REPO"
           echo "$NIVEAU_SECRET_REPO"
+      - name: List all environment variables
+        run: env
