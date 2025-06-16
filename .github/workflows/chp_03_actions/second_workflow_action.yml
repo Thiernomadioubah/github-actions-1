@@ -1,0 +1,12 @@
+name: les Actions en detail
+on: [push]
+jobs:
+  Explorer-Actions-Github:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with :
+          sparse-checkout: |
+            .github
+            fetch-depth: 3
+      - run: ls -la
