@@ -1,4 +1,4 @@
-name: Exemple avec always()
+name: Exemple var entre step
 on: push
 
 jobs :

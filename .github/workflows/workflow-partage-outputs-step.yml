@@ -1,0 +1,13 @@
+name: Exemple avec output entre steps
+on: push
+
+jobs :
+  exemple :
+    runs-on : ubuntu-latest
+    steps :
+      - name : définir une variable
+        id: setp1
+        run : echo "MA_VARIABLE=Bonjour" >> $GITHUB_OUPUT
+      - name : utiliser la variable
+        run : echo "La valeur de MA_VARIABLE est ${{steps.step1.MA_VARIABLE}}"
+     
