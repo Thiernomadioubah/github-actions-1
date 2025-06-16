@@ -26,4 +26,4 @@ jobs :
     runs-on: ubuntu-latest
     steps:
     - name: Affiche le statut du job
-      run: echo "Nom du `job` ${{ job.status }}"" #success, failure, ou cancelled.
+      run: echo "Nom du `job` ${{ job.status }}" #success, failure, ou cancelled.
