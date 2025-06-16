@@ -1,0 +1,32 @@
+# Nom du workflow
+name: Workflow réutilisable simple
+
+# Événements déclencheurs
+on:
+  workflow_call:
+    # Associe les sorties du workflow aux sorties des jobs
+    outputs:
+      premier_mot:
+        description: "La première chaîne de sortie"
+        value: ${{ jobs.job_example.outputs.output1 }}
+      deuxieme_mot:
+        description: "La deuxième chaîne de sortie"
+        value: ${{ jobs.job_example.outputs.output2 }}
+
+# Les jobs du workflow
+jobs:
+  # Un job d'exemple
+  job_example:
+    name: Génère des sorties
+    runs-on: ubuntu-latest
+    # Associe les sorties du job aux sorties des étapes
+    outputs:
+      output1: ${{ steps.step1.outputs.firstword }}
+      output2: ${{ steps.step2.outputs.secondword }}
+    steps:
+      # Première étape
+      - id: step1
+        run: echo "::set-output name=firstword::bonjour"
+      # Deuxième étape
+      - id: step2
+        run: echo "::set-output name=secondword::monde"

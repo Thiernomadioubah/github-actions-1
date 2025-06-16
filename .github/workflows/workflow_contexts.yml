@@ -1,21 +1,29 @@
 name: l'utilisation des contexts pour les variables
 on: [push]
-env:
-  NIVEAU_WORKFLOW: "Je suis une variable de workflow"
 
-jobs:
-  mon_job:
+env:
+  JOUR_DE_LA_SEMAINE: Lundi  # Définition d'une variable d'environnement globale
+
+jobs :
+  job_de_salutation :  # Nom du job
+    runs-on: ubuntu-latest  # Utilisation de la dernière version d'Ubuntu comme environnement de runner
+    env :
+      Salutation: Bonjour  # Définition d'une variable d'environnement au niveau du job
+    steps :
+      - name : "Dire bonjour à Pierre parce que c'est lundi"  # Nom de l'étape
+        if : ${{ env.JOUR_DE_LA_SEMAINE == 'Lundi' }}  # Condition pour exécuter cette étape
+        run : echo "$Salutation $Prenom. Aujourd'hui, c'est $JOUR_DE_LA_SEMAINE !"  # Commande à exécuter
+        env :
+          Prenom: Pierre  # Définition d'une variable d'environnement au niveau de l'étape
+  afficher:
     runs-on: ubuntu-latest
-    env:
-      NIVEAU_JOB: "Je suis une variable de job"
     steps:
-      - name: ${{ env.NIVEAU_WORKFLOW }} #context env remplacerment avant execution
-        env:
-          NIVEAU_ETAPE: "Je suis une variable d'étape"
-        run: |
-          echo "$NIVEAU_WORKFLOW"
-          echo "$NIVEAU_JOB"
-          echo "$NIVEAU_ETAPE"
-          echo ${{vars.NIVEAU_REPO}}
-          echo ${{secrets.NIVEAU_SECRET_REPO}}
-      
+    - name: Affiche des infos github
+      run: echo "Ce `workflow` a été déclenché par ${{ github.event_name }} sur la branche ${{ github.ref }}"
+
+#---------context de job
+  afficher-contex-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Affiche le statut du job
+      run: echo "Nom du `job` ${{ job.status }}"" #success, failure, ou cancelled.

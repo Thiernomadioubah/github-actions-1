@@ -1,0 +1,11 @@
+name: Exemple steps context
+on: push
+jobs:
+  afficher:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Etape 1
+      run: echo "Ceci est l'étape 1"
+      id: etape1
+    - name: Affiche le résultat de l'étape 1
+      run: echo "L'étape 1 a exécuté le run => ${{ steps.etape1.conclusion }}" # utilise l'id défini

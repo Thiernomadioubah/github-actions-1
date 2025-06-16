@@ -1,0 +1,8 @@
+name: Exemple runner context
+on: push
+jobs:
+  afficher:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Affiche l'OS du runner
+      run: echo "Le runner utilise l'OS ${{ runner.os }}"
