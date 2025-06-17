@@ -1,0 +1,18 @@
+name: Déploiement en staging
+
+on:
+  push:
+    branches:
+      - stating
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://toto.fr
+
+    steps:
+      - name: deploiement
+        run: echo deploiement en staging
+        # ...
