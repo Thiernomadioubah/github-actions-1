@@ -1,8 +1,8 @@
 # .github/workflows/pull_request.yml
 
 name: workflow se déclenche lors de la création d'une pull request
-on:
-  pull_request:
+on: 
+- push
 
 jobs:
   exemple_debug:
