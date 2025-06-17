@@ -1,0 +1,17 @@
+name: Déploiement
+
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploiement:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: deploiement
