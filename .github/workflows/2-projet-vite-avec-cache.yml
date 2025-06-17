@@ -25,4 +25,4 @@ jobs:
 
     - name: Installation des dépendances
       run: npm ci --cache .npm --prefer-offline
-      working-directory: vite-project
+      working-directory: ./vite-project
