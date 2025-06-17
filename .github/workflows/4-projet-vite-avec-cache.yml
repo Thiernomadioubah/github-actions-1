@@ -1,0 +1,30 @@
+
+name: utilisation du cache defauts sur un projet vite
+on: 
+- push
+defaults:
+  run:
+    shell: bash
+    working-directory: vite-project
+
+jobs:
+  test_projet_vite:
+    runs-on: ubuntu-latest
+    steps:
+    - name: installation de node js
+      uses: actions/setup-node@v4
+
+    - name: recuperer le repertoire
+      uses: actions/checkout@v4
+
+    - name: Mise en cache des dépendances npm
+      uses: actions/cache@v3
+      with:
+        path: ./.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Installation des dépendances
+      run: npm ci --cache .npm --prefer-ofline
+      # working-directory: vite-project
