@@ -7,13 +7,13 @@ on:
     # branches-ignore:
     #   - 'develop'
     #   - 'releases/**-alpha'
-    paths:
-      - '**.js'
-      - '!docs/**'
+    # paths:
+    #   - '**.js'
+    #   - '!docs/**'
     # paths-ignore:
     #   - 'docs/**'
-      - 'sub-project/**'
-      - '!sub-project/docs/**'
+      # - 'sub-project/**'
+      # - '!sub-project/docs/**'
 
 jobs:
   build:
