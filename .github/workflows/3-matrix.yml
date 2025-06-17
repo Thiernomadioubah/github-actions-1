@@ -1,0 +1,31 @@
+name: exemple de matrice multi-dimensionnelle avec include
+
+on: push
+
+jobs:
+  exemple_matrix:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        version: [12, 14, 16]
+        include:
+          - os: windows-latest
+            version: 17
+          - os: windows-latest
+            version: 16
+            npm: 6
+        #--execute une version supplemtaire de windows
+          - os: windows-latest
+            version: 17
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "os actuel est ${{ matrix.os }}"
+    - run: echo "version actuelle est ${{ matrix.version }}"
+    - run: sleep 5
+    - name: Affichage des variables de la matrice
+      run: |
+        echo "OS : ${{ matrix.os }}"
+        echo "Node : ${{ matrix.version }}"
+        if [ "${{ matrix.npm }}" != "" ]; then
+          echo "NPM : ${{ matrix.npm }}"
+        fi
