@@ -2,10 +2,10 @@
 name: utilisation du cache defauts sur un projet vite
 on: 
 - push
-defaults:
-  run:
-    shell: bash
-    working-directory: vite-project
+# defaults:
+#   run:
+#     shell: bash
+#     working-directory: vite-project
 
 jobs:
   test_projet_vite:
@@ -20,11 +20,9 @@ jobs:
     - name: Mise en cache des dépendances npm
       uses: actions/cache@v3
       with:
-        path: ./.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+        path: ./vite-project/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('./vite-project/package-lock.json') }}
 
     - name: Installation des dépendances
       run: npm ci --cache .npm --prefer-offline
-      # working-directory: vite-project
+      working-directory: vite-project
