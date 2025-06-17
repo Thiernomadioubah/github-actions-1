@@ -1,0 +1,44 @@
+# .github/workflows/pull_request.yml
+
+name: workflow se déclenche lors de la création d'une pull request
+on:
+  pull_request:
+
+jobs:
+  exemple_debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher un message de débogage
+        run: echo "::debug::Ceci est un message de débogage"
+  exemple_notice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher un message de notification
+        run: echo "::notice file=exemple.txt,line=1,col=5::Un message de notification"
+  exemple_warning:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher un message d'avertissement
+        run: echo "::warning file=exemple.txt,line=1,col=5::Un message d'avertissement"
+  exemple_error:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher un message d'erreur
+        run: echo "::error file=exemple.txt,line=1,col=5::Un message d'erreur"
+
+  exemple_group:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Regrouper des lignes de journal
+        run: |
+          echo "::group::Mon groupe"
+          echo "Ceci est à l'intérieur du groupe"
+          sleep 2
+          echo "::endgroup::"
+  exemple_mask:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Masquer une valeur
+        run: |
+          echo "::add-mask::mot_de_passe"
+          echo "mon mot_de_passe est mot_de_passe"  # ceci masquera "mot_de_passe" dans le journal

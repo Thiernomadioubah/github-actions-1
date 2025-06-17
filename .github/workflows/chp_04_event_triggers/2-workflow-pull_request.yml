@@ -1,0 +1,54 @@
+# .github/workflows/pull_request.yml
+
+name: workflow se déclenche lors de la création d'une pull request
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # cette étape simule des tests unitaires
+      - name: Exécution des tests unitaires
+        run: |
+          echo "Exécution des tests unitaires..."
+          sleep 2
+          echo "Tests unitaires passés."
+
+# .github/workflows/issue_created.yml
+
+# name: workflow se déclenche lors de l'ouverture d'une nouvelle issue
+# on:
+#   issues:
+#     types:
+#       - opened
+
+# jobs:
+#   alert:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # cette étape envoie une alerte
+#       - name: Envoi d'une alerte
+#         run: echo "Une nouvelle issue a été créée."
+
+
+# .github/workflows/scheduled_job.yml
+
+# name: workflow se déclenche tous les jours à minuit
+# on:
+#   schedule:
+#     - cron: '0 0 * * *'
+
+# jobs:
+#   maintenance:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # cette étape simule une tâche de maintenance quotidienne
+#       - name: Tâche de maintenance
+#         run: |
+#           echo "Début de la maintenance quotidienne..."
+#           sleep 2
+#           echo "Maintenance quotidienne terminée."
