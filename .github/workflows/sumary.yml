@@ -1,0 +1,15 @@
+name: utilisation de sumary de github
+on: push
+jobs:
+  afficher_resume_multiligne:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Résumé avec liste
+      run: |
+        echo "Ceci est une introduction à la liste" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- Point 1" >> $GITHUB_STEP_SUMMARY
+        echo "- Point 2" >> $GITHUB_STEP_SUMMARY
+        echo "- Point 3" >> $GITHUB_STEP_SUMMARY
+        echo "### Bonjour tout le monde ! :rocket:" >> $GITHUB_STEP_SUMMARY
+        
