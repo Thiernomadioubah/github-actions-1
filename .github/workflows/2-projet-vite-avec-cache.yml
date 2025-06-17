@@ -21,8 +21,8 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./vite-project/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('./vite-project/package.json') }}
+        key: ${{ runner.os }}-${{ hashFiles('./vite-project/package.json') }}
 
     - name: Installation des dépendances
-      run: npm ci --cache .npm --prefer-offline
+      run: npm ci --cache .npm #--prefer-offline
       working-directory: ./vite-project
