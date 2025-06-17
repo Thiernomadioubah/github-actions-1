@@ -28,10 +28,11 @@ jobs:
     # - name: Cloner le dépôt
     #   run: git clone https://github.com/votre/depot.git
 
-    - name: Faire des modifications
-      run: echo "modifications" >> fichier.txt
+    
     - name: recuperer le contenu du depot
       uses: actions/checkout@v4
+    - name: Faire des modifications
+      run: echo "modifications" >> fichier.txt
     - name: Commit et push
       run: |
         git config --global user.name 'github-actions'
