@@ -1,9 +1,41 @@
-name: Voir permissions par défaut
+name: Workflow avec permissions par défaut en lecture et un job en écriture
 on: [push]
 
+permissions:
+  contents: read
+
 jobs:
-  check_default_permissions:
+  read_only_job:
     runs-on: ubuntu-latest
     steps:
-    - name: Afficher les permissions
-      run: echo "Les permissions par défaut seront affichées dans la section 'Set up job' des logs du run de workflow."
+    - name: Cloner le dépôt
+      run: echo "exemple => git clone https://github.com/votre/depot.git"
+
+    - name: Exécuter des commandes en lecture seule
+      run: echo "Ces commandes peuvent seulement lire le contenu du dépôt."
+
+  another_read_only_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Autres commandes en lecture seule
+      run: echo "Ces commandes sont également en lecture seule, car les permissions par défaut s'appliquent à tout le workflow."
+
+  write_job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    # - name: Cloner le dépôt
+    #   run: git clone https://github.com/votre/depot.git
+
+    - name: Faire des modifications
+      run: echo "modifications" >> fichier.txt
+    - name: recuperer le contenu du depot
+      uses: actions/checkout@v4
+    - name: Commit et push
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@example.com'
+        git add fichier.txt
+        git commit -m "Ajouter des modifications via GitHub Actions"
+        git push origin HEAD:nom_de_branche
