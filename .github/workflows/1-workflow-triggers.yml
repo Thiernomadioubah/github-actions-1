@@ -1,0 +1,29 @@
+name: les triggers
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+    # branches-ignore:
+    #   - 'develop'
+    #   - 'releases/**-alpha'
+    paths:
+      - '**.js'
+      - '!docs/**'
+    # paths-ignore:
+    #   - 'docs/**'
+      - 'sub-project/**'
+      - '!sub-project/docs/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: affichage 1
+      run: |
+        echo "La branche ciblée a déclenché la workflow."
+        sleep 2
+    - name: affichage 2
+      run: |
+        echo "Un fichier JavaScript a été modifié, déclenchant cette workflow."
+        sleep 2
