@@ -1,0 +1,21 @@
+# .github/workflows/pull_request.yml
+
+name: utilisationdes valeurspar defauts sur un projet vite
+on: 
+- push
+defaults:
+  run:
+    shell: bash
+    working-directory: vite-project
+
+jobs:
+  test_projet_vite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: installation de node js
+        uses: actions/setup-node@v4
+      - name: recuperer le repertoire
+        uses: actions/checkout@v4
+      - name: installation des dependances
+        run: npm install
+  
