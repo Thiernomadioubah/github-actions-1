@@ -1,0 +1,9 @@
+name: Voir permissions par défaut
+on: [push]
+
+jobs:
+  check_default_permissions:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Afficher les permissions
+      run: echo "Les permissions par défaut seront affichées dans la section 'Set up job' des logs du run de workflow."

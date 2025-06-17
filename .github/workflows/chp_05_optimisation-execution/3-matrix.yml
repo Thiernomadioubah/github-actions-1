@@ -10,13 +10,14 @@ jobs:
         version: [12, 14, 16]
         include:
           - os: windows-latest
-            version: 17
-          - os: windows-latest
             version: 16
             npm: 6
         #--execute une version supplemtaire de windows
           - os: windows-latest
             version: 17
+        exclude:
+          - os: macos-latest
+            version: 12
     runs-on: ubuntu-latest
     steps:
     - run: echo "os actuel est ${{ matrix.os }}"
