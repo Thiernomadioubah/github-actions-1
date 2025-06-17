@@ -1,0 +1,18 @@
+name: Déploiement en production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://test.fr
+
+    steps:
+      - name: deploiement
+        run: echo deploiement en production
+        # ...
